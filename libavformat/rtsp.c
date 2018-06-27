@@ -954,6 +954,8 @@ static void rtsp_parse_transport(AVFormatContext *s,
                                      &th->server_port_max, &p);
                 }
             } else if (!strcmp(parameter, "interleaved")) {
+                 //likely TCP
+                th->lower_transport = RTSP_LOWER_TRANSPORT_TCP;
                 if (*p == '=') {
                     p++;
                     rtsp_parse_range(&th->interleaved_min,
